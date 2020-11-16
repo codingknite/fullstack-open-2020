@@ -12,4 +12,4 @@
 
 ### Exercise 0.6: New Note
 
-![](new-note-spa.png)
+![New Note SPA](new-note-spa.png)

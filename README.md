@@ -6,4 +6,4 @@ This repository contains exercise solutions to the 2020 edition of the Full Stac
 
 Sequence diagrams to illustrate the stages in network communication within a web application
 
-[View Solutions](https://github.com/mojpm/fullstack-open-2020/tree/master/part-0)
+[View Solutions](https://github.com/mojpm/fullstack-open-2020/tree/master/part0)
