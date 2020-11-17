@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This project was one of the exercises in the Full Stack Open course by the University of Helsinki.
+It was one of the exercises in the Full Stack Open course by the University of Helsinki.
 
 You can find the exercise descriptions [here](https://fullstackopen.com/en/part0/fundamentals_of_web_apps#exercises-0-1-0-6)
 
