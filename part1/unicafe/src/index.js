@@ -9,9 +9,8 @@ const Button = ({ handleClick, text }) => (
 
 const Statistic = ({ statName, statCount }) => (
   <tr>
-    <td>
-      {statName} {statCount}
-    </td>
+    <td>{statName}</td>
+    <td> {statCount}</td>
   </tr>
 );
 
@@ -24,7 +23,7 @@ const Statistics = (props) => {
           <Statistic statName="neutral" statCount={props.neutral} />
           <Statistic statName="bad" statCount={props.bad} />
           <Statistic statName="all" statCount={props.all} />
-          <Statistic statName="average" statCount={0} />
+          <Statistic statName="average" statCount={props.average} />
           <Statistic statName="positive" statCount={props.positive} />
         </tbody>
       </table>
@@ -43,6 +42,14 @@ const App = () => {
 
   const calcPositive = () => (good > 0 ? (good / all) * 100 : 0);
   const positive = calcPositive() + ' %';
+
+  const calcAverage = () =>
+    good > 0 && bad > 0 && neutral > 0
+      ? (1 * good + -1 * bad + 0 * neutral) / all
+      : 0;
+  const average = calcAverage();
+
+  console.log(calcAverage());
 
   const handleGood = () => {
     setGood(() => good + 1);
@@ -72,6 +79,7 @@ const App = () => {
         bad={bad}
         all={all}
         positive={positive}
+        average={average}
       />
     </div>
   );
