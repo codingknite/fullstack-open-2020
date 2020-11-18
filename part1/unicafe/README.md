@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 It was one of the exercises in the Full Stack Open course by the University of Helsinki.
 
-You can find the exercise descriptions [here](https://fullstackopen.com/en/part0/fundamentals_of_web_apps#exercises-0-1-0-6)
+You can find the exercise descriptions [here](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#exercises-1-6-1-14)
 
 ## Available Scripts
 
