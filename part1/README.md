@@ -9,8 +9,8 @@
 
 #### [unicafe](https://github.com/mojpm/fullstack-open-2020/tree/master/part1/unicafe)
 
-- Exercises 1.6 - 1.11 - [Description](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#exercises-1-6-1-14)
+- Exercises 1.6 - 1.11 - [Description](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#exercises-1-6-1-11)
 
 #### [anecdotes](https://github.com/mojpm/fullstack-open-2020/tree/master/part1/anecdotes)
 
-- Exercises 1.12 - 1.14 - [Description](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#exercises-1-6-1-14)
+- Exercises 1.12 - 1.14 - [Description](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#exercises-1-12-1-14)
