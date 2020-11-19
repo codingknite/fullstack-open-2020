@@ -17,34 +17,56 @@ const Anecdote = (props) => {
 };
 
 const App = (props) => {
+
+  const initialState = {
+    '0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0,
+  }
   const [selected, setSelected] = useState(0);
-  const [votes, setVotes] = useState(Array(6).fill(0));
+  const [votes, setVotes] = useState({ ...initialState });
+  const [highestVote, setHighestVote] = useState(0);
 
-  const generateRandom = () => Math.floor(Math.random() * (6 - 0) + 0);
-  const randomNumber = generateRandom();
 
-  const handleAnecdote = () => {
-    setSelected(selected + 1);
+  const nextAnecdote = () => {
+    const generateRandom = () => Math.floor(Math.random() * (6 - 0) + 0);
+    const randomNumber = generateRandom();
+    setSelected(randomNumber);
   };
 
-  const handleVotes = () => {
-    votes[randomNumber] += 1;
+  const vote = () => {
+    const currentVote = votes[selected];
+
+    setVotes({
+      ...votes,
+      [selected]: currentVote + 1,
+    })
+
+    if (currentVote > highestVote) {
+      setHighestVote(currentVote);
+    }
   };
 
-  const votesCopy = [...votes];
+  const mostVotedAnec = () => {
+    let anecdote;
+    for (const anec in votes) {
+      if (votes[anec] === highestVote + 1) {
+        anecdote = anec;
+      }
+    }
+    return anecdote;
+  }
 
-  const highestVote = votesCopy.sort((a, b) => a - b)[votes.length - 1];
-  const mostVoted = votes.indexOf(highestVote);
-  const currentVotes = votes[randomNumber];
+
+  const mostVoted = mostVotedAnec() || 0;
+  const latestVotes = votes[selected];
 
   return (
     <div>
       <Header header="Anecdote of the day" />
-      <Anecdote anecdote={props.anecdotes[randomNumber]} vote={currentVotes} />
-      <Button handleClick={handleVotes} text="Vote" />
-      <Button handleClick={handleAnecdote} text="New Anecdote" />
+      <Anecdote anecdote={props.anecdotes[selected]} vote={latestVotes} />
+      <Button handleClick={vote} text="Vote" />
+      <Button handleClick={nextAnecdote} text="Next Anecdote" />
       <Header header="Anecdote with most votes" />
-      <Anecdote anecdote={props.anecdotes[mostVoted]} vote={highestVote} />
+      <Anecdote anecdote={props.anecdotes[mostVoted]} vote={highestVote + 1} />
     </div>
   );
 };
