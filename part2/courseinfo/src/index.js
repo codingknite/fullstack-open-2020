@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Course from './components/Course';
 
-
 const App = () => {
-  // course.map
   const courses = [
     {
       name: 'Half Stack application development',
       id: 1,
+
       parts: [
         {
           name: 'Fundamentals of React',
@@ -35,6 +34,7 @@ const App = () => {
     {
       name: 'Node.js',
       id: 2,
+
       parts: [
         {
           name: 'Routing',
@@ -48,7 +48,6 @@ const App = () => {
         },
       ],
     },
-    // courses[0].parts[0].exercises
   ];
 
   return <Course course={courses} />;
