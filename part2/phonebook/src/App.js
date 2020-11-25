@@ -1,37 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import noteService from './services/notes';
 import Filter from './components/Filter';
-import Header from './components/Header'
+import Header from './components/Header';
 import PersonForm from './components/PersonForm';
+import Notification from './components/Notification'
 
 const App = () => {
-  const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', number: '040 - 1234567' },
-    { name: 'Joel P. Mugalu', number: '050 - 1237456' },
-    { name: 'Dan Abramov', number: '060 - 5612347' },
-    { name: 'Clement Mihailescu', number: '070 - 1456237' },
-    { name: 'Oliur Rahman', number: '080 - 3451267' },
-    { name: 'Andres Pirela', number: '090 - 1562347' },
-  ]);
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState('');
   const [number, setNumber] = useState('');
   const [nameFilter, setNameFilter] = useState('');
+  const [message, setMessage] = useState(null)
+
+  useEffect(() => {
+    noteService.getAll().then((returnedObject) => {
+      setPersons(returnedObject);
+    });
+  }, []);
 
   const addPerson = (event) => {
     event.preventDefault();
+    const existingPersons = persons.map((person) => person.name);
+    const existingNumbers = persons.map((person) => person.number);
 
-    // TODO Fix the functionality of not displaying already existing names
-    persons.map((person) => {
-      if (!Object.values(person).includes(newName)) {
+    if (
+      !existingPersons.includes(newName) &&
+      !existingNumbers.includes(number)
+    ) {
+      const newPerson = {
+        name: newName,
+        number: number,
+      };
+      noteService
+        .create(newPerson)
+        .then((newObject) => {
+          setPersons(persons.concat(newObject));
+          setMessage(`Added ${newObject.name}`)
+        })
+    } else {
+      let ID;
+      if (
+        window.confirm(
+          `${newName} is already added in the phonebook, replace the old number?`
+        )
+      ) {
+        persons.map((person) => {
+          if (person.name === newName || person.number === number) {
+            ID = person.id;
+          }
+        });
         const newPerson = {
           name: newName,
           number: number,
         };
-        setPersons(persons.concat(newPerson));
-      } else {
-        alert(`${newName} is already added to phonebook`);
+        noteService
+          .update(ID, newPerson)
+          .then((updatedDB) => {
+            persons.map((person) => {
+              if (person.name === updatedDB.name) {
+                const theID = person.id;
+                const copyPersons = { ...persons }
+                copyPersons[theID - 1].number = updatedDB.number;
+              }
+            })
+          });
       }
-    });
+    }
   };
+
+  const deletePerson = (ID, name) => () => {
+    if (window.confirm(`Delete ${name} ?`)) {
+      noteService
+        .deleteItem(ID)
+    }
+  }
 
   const handleNewPerson = (event) => {
     setNewName(event.target.value);
@@ -54,6 +96,7 @@ const App = () => {
   return (
     <div>
       <Header header="Phonebook" />
+      <Notification name={message} />
       <Filter nameFilter={filterNames} filterHandler={handleNameFilter} />
       <Header header="Add New Contact" />
       <PersonForm
@@ -66,10 +109,12 @@ const App = () => {
       <Header header="Numbers" />
       {filteredNames.map((person) => (
         <p key={person.name}>
-          {person.name} - {person.number}
+          {person.name} - {person.number}{' '}
+          <button value={person.name} onClick={deletePerson(person.id, person.name)}>
+            Delete
+          </button>
         </p>
       ))}
-
     </div>
   );
 };
