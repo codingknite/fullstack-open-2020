@@ -17,3 +17,13 @@ React projects to demostrate event handling, state management with state hooks, 
 - [anecdotes](https://github.com/mojpm/fullstack-open-2020/tree/master/part1/anecdotes) - Random software engineering quotes generator
 
 [View Solutions](https://github.com/mojpm/fullstack-open-2020/tree/master/part1)
+
+## Part 2 - [Communication with Server](https://fullstackopen.com/en/part2)
+
+React projects to demostrate working with lists, forms, getting data from a REST API, organising files in a React application, and styling applications
+
+- [courseinfo](https://github.com/mojpm/fullstack-open-2020/tree/master/part2/courseinfo) - Simple course information web page.
+- [countries](https://github.com/mojpm/fullstack-open-2020/tree/master/part2/countries) - A simple application to display basic information about a given country.
+- [phonebook](https://github.com/mojpm/fullstack-open-2020/tree/master/part2/phonebook) - A Web application that allows a user to add, delete, and update users in a phonebook
+
+[View Solutions](https://github.com/mojpm/fullstack-open-2020/tree/master/part2)
