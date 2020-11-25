@@ -12,7 +12,7 @@ const Country = (props) => {
     & query = ${props.countries.capital}`
       )
       .then((response) => {
-        weather = response;
+        weather = response.data;
       });
   }, []);
 
