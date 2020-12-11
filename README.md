@@ -27,3 +27,16 @@ React projects to demostrate working with lists, forms, getting data from a REST
 - [phonebook](https://github.com/mojpm/fullstack-open-2020/tree/master/part2/phonebook) - A Web application that allows a user to add, delete, and update users in a phonebook
 
 [View Solutions](https://github.com/mojpm/fullstack-open-2020/tree/master/part2)
+
+## Part 3 - [Programming a server with NodeJS and Express](https://fullstackopen.com/en/part3)
+
+This part changes focus to the how to backend or server side of applications works.
+
+It demostrates how to program the server using Node.js and Express.
+It also demostrates how to deploy a fullstack application to internet with heroku.
+
+In this part we intergrate the frontend of the phonebook application built in part 2 with our very own backend.
+
+Solutions to the exercises in this part can be found in a [separate repository](https://github.com/mojpm/part3-fullstack-open-2020)
+
+[View Solutions](https://github.com/mojpm/part3-fullstack-open-2020)
