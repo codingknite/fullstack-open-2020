@@ -1,31 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Country = (props) => {
-  let weather;
+const Weather = ({ city }) => {
+  const [weather, setWeather] = useState(null);
+  const APIKey = process.env.REACT_APP_API_KEY;
 
   useEffect(() => {
     axios
       .get(
-        `http://api.weatherstack.com/current
-    ? access_key = ${process.env.REACT_APP_API_KEY}
-    & query = ${props.countries.capital}`
+        `http://api.weatherstack.com/current?access_key=${APIKey}&query=${city}`
       )
       .then((response) => {
-        weather = response.data;
+        setWeather(response.data);
       });
   }, []);
 
-  console.log(weather);
+  return (
+    <div>
+      <p>Temperature: {12}</p>
+    </div>
+  );
+};
 
+const Country = (props) => {
   const countries = props.countries;
+
   return countries.map((country) => (
     <div key={country.numericCode}>
       <h2>{country.name}</h2>
+
       <div>
         <p>{country.capital}</p>
         <p>Population - {country.population}</p>
       </div>
+
       <div>
         <h3>Languages</h3>
         <p>
@@ -34,12 +42,16 @@ const Country = (props) => {
           ))}
         </p>
       </div>
+
       <div>
         <img src={country.flag} alt="The Flag" width="300px" />
       </div>
+
       <div>
         <h3>Weather in {country.capital}</h3>
-        <div>weather</div>
+        <div>
+          <Weather city={country.capital} />
+        </div>
       </div>
     </div>
   ));
