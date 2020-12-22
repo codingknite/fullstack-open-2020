@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-const Button = (props) => (
-  <button onClick={props.handleClick}>{props.text}</button>
+const Button = ({ handleClick, text }) => (
+  <button onClick={handleClick}>{text}</button>
 );
 
 const Header = (props) => <h1>{props.header}</h1>;
 
-const Anecdote = (props) => {
+const Anecdote = ({ anecdote, vote }) => {
   return (
     <div>
-      {props.anecdote}
-      <p>Has {props.vote} votes</p>
+      {anecdote}
+      <p>Has {vote} votes</p>
     </div>
   );
 };
@@ -19,8 +19,14 @@ const Anecdote = (props) => {
 const App = (props) => {
 
   const initialState = {
-    '0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0,
+    '0': 0,
+    '1': 0,
+    '2': 0,
+    '3': 0,
+    '4': 0,
+    '5': 0,
   }
+
   const [selected, setSelected] = useState(0);
   const [votes, setVotes] = useState({ ...initialState });
   const [highestVote, setHighestVote] = useState(0);
