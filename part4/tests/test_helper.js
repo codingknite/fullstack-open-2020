@@ -31,7 +31,7 @@ const mostBlogs = (blogs) => {
 
   const blogsByAuthor = _.toPairs(_.groupBy(blogs, b => b.author))
   const blockCountByAuthor = blogsByAuthor.map(([author, blogs]) => ({
-    author, 
+    author,
     blogs: blogs.length
   }) ).sort((a1, a2 ) => a2.blogs - a1.blogs)
 
@@ -45,7 +45,7 @@ const mostLikes = (blogs) => {
 
   const blogsByAuthor = _.toPairs(_.groupBy(blogs, b => b.author))
   const likeCountByAuthor = blogsByAuthor.map(([author, blogs]) => ({
-    author, 
+    author,
     likes: blogs.reduce((s, b) => s + b.likes, 0)
   }) ).sort((a1, a2 ) => a2.likes - a1.likes)
 
