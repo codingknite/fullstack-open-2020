@@ -28,7 +28,7 @@ describe("App ", function() {
         const names = `(${user.username}|${user.name})`;
         const notificationRegex = new RegExp(
           `logged|signed (.*)?${names}`,
-          "i"
+          "i" 
         );
 
         cy.contains(notificationRegex);
